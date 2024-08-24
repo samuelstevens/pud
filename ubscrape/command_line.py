@@ -1,6 +1,6 @@
 import argparse
 
-from .definitions import define_all_words, write_definition
+from .definitions import define_all_words, write_definition, write_definition_by_api
 from .words import write_all_words
 from .db import clear_database, dump_database, get_connection
 from .constants import VERSION
@@ -92,7 +92,8 @@ def main():
     elif args.tsv:
         dump_database(args.dump, csv=True)
     elif args.define:
-        definitions = write_definition((args.define,))
+        # definitions = write_definition((args.define,))
+        definitions = write_definition_by_api((args.define,))
         if definitions:
             print(definitions)
     elif args.define_all:

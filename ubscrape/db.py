@@ -21,9 +21,15 @@ def initialize_db():
     );''')
 
     con.execute('''CREATE TABLE IF NOT EXISTS definition (
-    id integer PRIMARY KEY,
-    word_id text NOT NULL,
-    definition text NOT NULL,
+    id INTEGER PRIMARY KEY,
+    word_id TEXT NOT NULL,
+    definition TEXT NOT NULL,
+    author TEXT,
+    example TEXT,
+    thumbs_up INTEGER,
+    thumbs_down INTEGER,
+    permalink TEXT,
+    written_on TEXT,
     FOREIGN KEY (word_id) REFERENCES word (word)
     );''')
 
