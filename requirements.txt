@@ -17,6 +17,5 @@ six==1.12.0
 soupsieve==1.9.3
 typed-ast==1.4.0
 typing-extensions==3.7.4
--e git+https://github.com/samuelstevens/ubscrape.git@2e3e42256b43b4633e9c189175114a8197c86c64#egg=ubscrape
 urllib3==1.26.5
 wrapt==1.11.2
