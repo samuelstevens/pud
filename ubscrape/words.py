@@ -62,9 +62,11 @@ def write_words_for_letter(prefix: str):
             # IntegrityError normally occurs when we try to
             # insert words that are already in the database.
             pass
-
+        first_word = ""
+        if len(words) >0 :
+            first_word = words[0]
         print(
-            f'Working on page {page_num} for {letter}. Total {140 * (page_num - 1) + len(words)} {letter} words.')
+            f'Working on page {page_num} for {letter}. Total {140 * (page_num - 1) + len(words)} {letter} words. first word of page is {first_word}')
 
         page_num += 1
         url = make_url()
