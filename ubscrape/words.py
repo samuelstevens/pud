@@ -35,8 +35,8 @@ def write_words_for_letter(prefix: str):
 
     url = make_url()
     req = requests.get(url)
-
-    while req.url != 'https://www.urbandictionary.com/':
+    last_page_size = 1
+    while last_page_size != 0:
         soup = BeautifulSoup(req.text, features="html.parser")
         a_tags = soup.find_all('a', href=re.compile(r'/define.php'))
 
@@ -50,9 +50,10 @@ def write_words_for_letter(prefix: str):
 
         words: List[str] = [unquote(w) for w in encoded_words]
 
+        last_page_size = len(words)
+
         formatted_words: List[Tuple[str, int, int, str]] = [
             (w, 0, page_num, letter) for w in words]
-
         try:
             CON.executemany(
                 'INSERT INTO word(word, complete, page_num, letter) VALUES (?, ?, ?, ?)',
