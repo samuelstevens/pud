@@ -78,7 +78,7 @@ def write_definition_by_api(word_t: Tuple[str]) -> List[dict]:
 
 
 def define_all_words():
-    pool = mp.Pool(mp.cpu_count())
+    pool = mp.Pool(50)
 
     words = CON.execute(
         'SELECT word FROM word WHERE complete = 0').fetchall()
